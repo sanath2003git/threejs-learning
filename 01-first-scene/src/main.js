@@ -2,6 +2,14 @@ import './style.css';
 import * as THREE from "three";
 
 const scene = new THREE.Scene();
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+
+directionalLight.position.set(2, 2, 5);
+
+scene.add(directionalLight);
 
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -16,8 +24,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({
-  color: 0x0000ff,
+const material = new THREE.MeshStandardMaterial({
+  color: 0x000ff,
 });
 
 const cube = new THREE.Mesh(geometry, material);
