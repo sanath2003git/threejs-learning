@@ -43,48 +43,85 @@ scene.add(directionalLight);
 // Material
 // =========================
 const material = new THREE.MeshStandardMaterial({
-  color: 0x0000ff,
+  color: 0xffffff,
 });
 
 // =========================
 // Meshes
 // =========================
-const sphereLow = new THREE.Mesh(
-  new THREE.SphereGeometry(2, 4, 2),
+const sphere1 = new THREE.Mesh(
+  new THREE.SphereGeometry(1, 16, 8),
   material
 );
 
-const sphereMedium = new THREE.Mesh(
+const sphere2 = new THREE.Mesh(
+  new THREE.SphereGeometry(1.5, 16, 8),
+  material
+);
+
+const sphere3 = new THREE.Mesh(
   new THREE.SphereGeometry(2, 16, 8),
   material
 );
 
-const sphereHigh = new THREE.Mesh(
-  new THREE.SphereGeometry(2, 64, 32),
-  material
+const nose = new THREE.Mesh(
+  new THREE.ConeGeometry(0.1,0.1),
+  new THREE.MeshStandardMaterial({
+  color: 0xff6a45,})
+);
+
+const eye1 = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.1,0.1,0.1,32),
+  new THREE.MeshStandardMaterial({
+  color: 0x000000,})
+);
+
+const eye2 = new THREE.Mesh(
+  new THREE.CylinderGeometry(0.1,0.1,0.1,32),
+  new THREE.MeshStandardMaterial({
+  color: 0x000000,})
 );
 
 const objects = [
-  sphereLow,
-  sphereMedium,
-  sphereHigh,
+  sphere1,
+  sphere2,
+  sphere3,
+  nose,
+  eye1,
+  eye2,
 ];
 
 // =========================
 // Positions
 // =========================
-sphereLow.position.x = -5;
+sphere1.position.y = 2;
 
-sphereMedium.position.x = 0;
+sphere2.position.y = 0;
 
-sphereHigh.position.x = 5;
+sphere3.position.y = -2;
 
+nose.position.y = 1.7;
+nose.position.z = 1;
+nose.rotation.x = 1.7;
+
+eye1.position.y = 2;
+eye2.position.y = 2;
+eye1.position.z = 1;
+eye2.position.z = 1;
+eye1.position.x = 0.3;
+eye2.position.x = -0.3;
+eye1.rotation.x = 1.7;
+eye2.rotation.x = 1.7;
 // =========================
 // Add to Scene
 // =========================
-scene.add(sphereLow);
-scene.add(sphereMedium);
-scene.add(sphereHigh);
+scene.add(sphere1);
+scene.add(sphere2);
+scene.add(sphere3);
+scene.add(nose);
+scene.add(eye1);
+scene.add(eye2);
+
 
 
 // =========================
@@ -93,10 +130,10 @@ scene.add(sphereHigh);
 function animate() {
   requestAnimationFrame(animate);
 
-  objects.forEach((object) => {
-  object.rotation.x += 0.01;
-  object.rotation.y += 0.01;
-});
+//   objects.forEach((object) => {
+//   object.rotation.x += 0.01;
+//   object.rotation.y += 0.01;
+// });
 
   renderer.render(scene, camera);
 }
