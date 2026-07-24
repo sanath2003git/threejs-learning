@@ -16,7 +16,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-camera.position.z = 10;
+camera.position.z = 9;
 
 // =========================
 // Renderer
@@ -49,69 +49,43 @@ const material = new THREE.MeshStandardMaterial({
 // =========================
 // Meshes
 // =========================
-const box = new THREE.Mesh(
-  new THREE.BoxGeometry(),
+const sphereLow = new THREE.Mesh(
+  new THREE.SphereGeometry(2, 4, 2),
   material
 );
 
-const sphere = new THREE.Mesh(
-  new THREE.SphereGeometry(),
+const sphereMedium = new THREE.Mesh(
+  new THREE.SphereGeometry(2, 16, 8),
   material
 );
 
-const cone = new THREE.Mesh(
-  new THREE.ConeGeometry(),
-  material
-);
-
-const cylinder = new THREE.Mesh(
-  new THREE.CylinderGeometry(),
-  material
-);
-
-const torus = new THREE.Mesh(
-  new THREE.TorusGeometry(),
-  material
-);
-
-const capsule = new THREE.Mesh(
-  new THREE.CapsuleGeometry(),
+const sphereHigh = new THREE.Mesh(
+  new THREE.SphereGeometry(2, 64, 32),
   material
 );
 
 const objects = [
-  box,
-  sphere,
-  cone,
-  cylinder,
-  torus,
-  capsule,
+  sphereLow,
+  sphereMedium,
+  sphereHigh,
 ];
 
 // =========================
 // Positions
 // =========================
-box.position.x = -7;
+sphereLow.position.x = -5;
 
-sphere.position.x = -4;
+sphereMedium.position.x = 0;
 
-cone.position.x = -1;
-
-cylinder.position.x = 2;
-
-torus.position.x = 5;
-
-capsule.position.x = 8;
+sphereHigh.position.x = 5;
 
 // =========================
 // Add to Scene
 // =========================
-scene.add(box);
-scene.add(sphere);
-scene.add(cone);
-scene.add(cylinder);
-scene.add(torus);
-scene.add(capsule);
+scene.add(sphereLow);
+scene.add(sphereMedium);
+scene.add(sphereHigh);
+
 
 // =========================
 // Animation
